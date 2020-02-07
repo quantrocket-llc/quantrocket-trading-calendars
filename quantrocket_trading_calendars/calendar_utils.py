@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from trading_calendars import register_calendar_type, register_calendar_alias
+from trading_calendars.calendar_utils import _default_calendar_factories
 from .exchange_calendar_aeb import AEBExchangeCalendar
 from .exchange_calendar_asx import ASXExchangeCalendar
 from .exchange_calendar_bm import BMExchangeCalendar
@@ -108,5 +109,6 @@ for alias, real_name in _quantrocket_ibkr_calendar_aliases.items():
 
 for alias, real_name in _quantrocket_mic_aliases.items():
     register_calendar_alias(alias, real_name, force=True)
+    quantrocket_calendar_factories[alias] = _default_calendar_factories[real_name]
 
 quantrocket_calendar_names = sorted(quantrocket_calendar_factories.keys())

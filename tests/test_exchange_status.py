@@ -58,6 +58,13 @@ class ExchangeStatusTestCase(unittest.TestCase):
              'since': '2018-12-24T13:00:00',
              'until': '2018-12-26T09:30:00'})
 
+    def test_mic_aliases(self):
+        self.assertDictEqual(
+            get_exchange_status("PINX", "2018-12-24 13:30:00"),
+            {'status': 'closed',
+             'since': '2018-12-24T13:00:00',
+             'until': '2018-12-26T09:30:00'})
+
     def test_fallback_to_trading_calendars(self):
         self.assertDictEqual(
             get_exchange_status("XNYS", "2018-12-24 13:30:00"),
