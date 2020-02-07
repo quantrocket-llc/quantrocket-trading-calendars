@@ -1,2 +1,2 @@
 include versioneer.py
-include ib_trading_calendars/_version.py
+include quantrocket_trading_calendars/_version.py

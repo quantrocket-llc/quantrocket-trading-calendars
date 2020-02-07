@@ -1,13 +1,13 @@
-# ib-trading-calendars
+# quantrocket-trading-calendars
 
-Trading calendars for Interactive Brokers-supported exchanges. Based on [quantopian/trading_calendars](https://github.com/quantopian/trading_calendars).
+Trading calendars for QuantRocket-supported exchanges. Based on [quantopian/trading_calendars](https://github.com/quantopian/trading_calendars).
 
-This package differs from the underlying `quantopian/trading_calendars` package in that it uses IBKR exchange codes instead of MIC codes.
+This package differs from the underlying `quantopian/trading_calendars` package in that it provides additional support for Interactive Brokers exchange codes and other exchange codes used in QuantRocket.
 
 ## Installation
 
 ```
-pip install ib-trading-calendars
+pip install quantrocket-trading-calendars
 ```
 
 ## Supported exchanges
@@ -52,17 +52,17 @@ Currently the supported IBKR exchange codes are:
 ## Usage
 
 ```python
-from ib_trading_calendars import get_calendar
+from quantrocket_trading_calendars import get_calendar
 get_calendar("NYSE")
 ```
 
 To see supported exchanges:
 
 ```python
-from ib_trading_calendars import ib_calendar_names
-print(ib_calendar_names)
+from quantrocket_trading_calendars import quantrocket_calendar_names
+print(quantrocket_calendar_names)
 ```
 
 ## License
 
-`ib-trading-calendars` is distributed under the Apache 2.0 License. See the LICENSE file in the release for details.
+`quantrocket-trading-calendars` is distributed under the Apache 2.0 License. See the LICENSE file in the release for details.

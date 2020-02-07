@@ -14,7 +14,7 @@
 
 
 from trading_calendars.calendar_utils import get_calendar
-from .calendar_utils import ib_calendar_names
+from .calendar_utils import quantrocket_calendar_names
 
 from ._version import get_versions
 __version__ = get_versions()['version']

@@ -16,11 +16,11 @@
 
 import unittest
 import pandas as pd
-from ib_trading_calendars.status import get_exchange_status
+from quantrocket_trading_calendars.status import get_exchange_status
 
 class ExchangeStatusTestCase(unittest.TestCase):
 
-    def test_ib_trading_calendars(self):
+    def test_quantrocket_trading_calendars(self):
 
         # holiday
         self.assertDictEqual(

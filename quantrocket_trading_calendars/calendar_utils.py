@@ -41,7 +41,7 @@ from .exchange_calendar_tsej import TSEJExchangeCalendar
 from .exchange_calendar_vse import VSEExchangeCalendar
 from .exchange_calendar_wse import WSEExchangeCalendar
 
-_ib_calendar_factories = {
+_quantrocket_ibkr_calendar_factories = {
     "AEB": AEBExchangeCalendar,
     "ASX": ASXExchangeCalendar,
     "BM": BMExchangeCalendar,
@@ -71,7 +71,7 @@ _ib_calendar_factories = {
     "WSE": WSEExchangeCalendar,
 }
 
-_ib_calendar_aliases = {
+_quantrocket_ibkr_calendar_aliases = {
     "NASDAQ": "NYSE",
     "ARCA": "NYSE",
     "AMEX": "NYSE",
@@ -79,18 +79,34 @@ _ib_calendar_aliases = {
     "IEX": "NYSE",
     "PINK": "NYSE",
     "ENEXT": "ENEXT.BE",
-    "SEHKSZSE": "SEHKNTL"
+    "SEHKSZSE": "SEHKNTL",
 }
 
-ib_calendar_factories = {}
+_quantrocket_mic_aliases = {
 
-for name, calendar in _ib_calendar_factories.items():
+    # Other US Mics
+    "XNAS": "XNYS",
+    "ARCX": "XNYS",
+    "XASE": "XNYS",
+    "BATS": "XNYS",
+    "PINX": "XNYS",
+    "PSGM": "XNYS",
+    "OTCB": "XNYS",
+    "OTCQ": "XNYS",
+}
+
+quantrocket_calendar_factories = {}
+
+for name, calendar in _quantrocket_ibkr_calendar_factories.items():
     register_calendar_type(name, calendar, force=True)
-    ib_calendar_factories[name] = calendar
+    quantrocket_calendar_factories[name] = calendar
 
 
-for alias, real_name in _ib_calendar_aliases.items():
+for alias, real_name in _quantrocket_ibkr_calendar_aliases.items():
     register_calendar_alias(alias, real_name, force=True)
-    ib_calendar_factories[alias] = ib_calendar_factories[real_name]
+    quantrocket_calendar_factories[alias] = quantrocket_calendar_factories[real_name]
 
-ib_calendar_names = sorted(ib_calendar_factories.keys())
+for alias, real_name in _quantrocket_mic_aliases.items():
+    register_calendar_alias(alias, real_name, force=True)
+
+quantrocket_calendar_names = sorted(quantrocket_calendar_factories.keys())

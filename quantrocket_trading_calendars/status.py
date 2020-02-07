@@ -17,7 +17,7 @@
 import argparse
 import pandas as pd
 import json
-from ib_trading_calendars.calendar_utils import ib_calendar_factories
+from quantrocket_trading_calendars.calendar_utils import quantrocket_calendar_factories
 from trading_calendars.calendar_utils import _default_calendar_factories
 
 def get_exchange_status(exchange, dt):
@@ -25,7 +25,7 @@ def get_exchange_status(exchange, dt):
     Returns the exchange status at the specified datetime.
     """
     try:
-        calendar_cls = ib_calendar_factories[exchange]
+        calendar_cls = quantrocket_calendar_factories[exchange]
     except KeyError:
         calendar_cls = _default_calendar_factories[exchange]
 
