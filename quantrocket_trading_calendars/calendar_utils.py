@@ -94,6 +94,7 @@ _quantrocket_mic_aliases = {
     "PSGM": "XNYS",
     "OTCB": "XNYS",
     "OTCQ": "XNYS",
+    "OTCM": "XNYS",
 }
 
 quantrocket_calendar_factories = {}
