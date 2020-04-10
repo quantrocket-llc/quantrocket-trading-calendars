@@ -10,7 +10,7 @@ This package differs from the underlying `quantopian/trading_calendars` package 
 pip install quantrocket-trading-calendars
 ```
 
-## Supported exchanges
+## Supported IBKR exchanges
 
 Currently the supported IBKR exchange codes are:
 
@@ -59,8 +59,8 @@ get_calendar("NYSE")
 To see supported exchanges:
 
 ```python
-from quantrocket_trading_calendars import quantrocket_calendar_names
-print(quantrocket_calendar_names)
+from quantrocket_trading_calendars import all_calendar_names
+print(all_calendar_names)
 ```
 
 ## License
