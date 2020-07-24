@@ -17,6 +17,7 @@
 import unittest
 import pandas as pd
 from quantrocket_trading_calendars.status import get_exchange_status
+from quantrocket_trading_calendars import all_calendar_names, get_calendar
 
 class ExchangeStatusTestCase(unittest.TestCase):
 
@@ -71,3 +72,17 @@ class ExchangeStatusTestCase(unittest.TestCase):
             {'status': 'closed',
              'since': '2018-12-24T13:00:00',
              'until': '2018-12-26T09:30:00'})
+
+class CountryCodeTestCase(unittest.TestCase):
+
+    def test_no_missing_country_codes(self):
+        """
+        Tests that country_code is populated on each calendar. Country codes
+        are added in the QuantRocket fork of quantopian/trading_calendars
+        """
+
+        for calendar_name in all_calendar_names:
+            self.assertTrue(
+                bool(get_calendar(calendar_name).country_code),
+                msg=f"country_code missing for calendar {calendar_name}"
+            )
