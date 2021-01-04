@@ -31,7 +31,7 @@ class ExchangeStatusTestCase(unittest.TestCase):
              'until': '2014-10-08T09:30:00'})
 
         # reopened after holiday
-        # Note: ib-trading-calendars ignores lunch break
+        # Note: quantrocket-trading-calendars ignores lunch break
         self.assertDictEqual(
             get_exchange_status("SEHKNTL", "2014-10-08 10:00:00"),
             {'status': 'open',
@@ -51,6 +51,56 @@ class ExchangeStatusTestCase(unittest.TestCase):
             {'status': 'open',
              'since': '2019-01-22T09:30:00',
              'until': '2019-01-22T16:00:00'})
+
+        # right before open
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 09:29:59"),
+            {'status': 'closed',
+            'since': '2019-01-02T16:00:00',
+            'until': '2019-01-03T09:30:00'})
+
+        # right at open
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 09:30:00"),
+            {'status': 'open',
+            'since': '2019-01-03T09:30:00',
+            'until': '2019-01-03T16:00:00'})
+
+        # right after open
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 09:30:01"),
+            {'status': 'open',
+            'since': '2019-01-03T09:30:00',
+            'until': '2019-01-03T16:00:00'})
+
+        # right before open
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 15:59:59"),
+            {'status': 'open',
+            'since': '2019-01-03T09:30:00',
+            'until': '2019-01-03T16:00:00'})
+
+        # right at close (still says open which is perhaps inconsistent
+        # with how the open is handled, but okay)
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 16:00:00"),
+            {'status': 'open',
+            'since': '2019-01-03T09:30:00',
+            'until': '2019-01-03T16:00:00'})
+
+        # right after close
+        self.assertDictEqual(
+            get_exchange_status("XNYS", "2019-01-03 16:00:01"),
+            {'status': 'closed',
+            'since': '2019-01-03T16:00:00',
+            'until': '2019-01-04T09:30:00'})
+
+        # holiday
+        self.assertDictEqual(
+            get_exchange_status("SEHKNTL", "2014-10-06 10:00:00"),
+            {'status': 'closed',
+             'since': '2014-09-30T15:00:00',
+             'until': '2014-10-08T09:30:00'})
 
         # early close
         self.assertDictEqual(
