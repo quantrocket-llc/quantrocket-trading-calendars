@@ -10,9 +10,9 @@ This package differs from the underlying `quantopian/trading_calendars` package 
 pip install quantrocket-trading-calendars
 ```
 
-## Supported IBKR exchanges
+## Supported exchanges
 
-Currently the supported IBKR exchange codes are:
+Currently the supported exchange codes provided by this package (not including the exchange codes provided by `trading_calendars`) are:
 
 * AEB
 * AMEX
@@ -48,6 +48,7 @@ Currently the supported IBKR exchange codes are:
 * TSEJ
 * VSE
 * WSE
+* us_extended_hours
 
 ## Usage
 

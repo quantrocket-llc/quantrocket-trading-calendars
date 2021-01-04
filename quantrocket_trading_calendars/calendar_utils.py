@@ -35,6 +35,7 @@ from .exchange_calendar_lse import LSEExchangeCalendar
 from .exchange_calendar_mexi import MEXIExchangeCalendar
 from .exchange_calendar_moex import MOEXExchangeCalendar
 from .exchange_calendar_nyse import NYSEExchangeCalendar
+from .exchange_calendar_us_extended_hours import USExtendedHoursExchangeCalendar
 from .exchange_calendar_ose import OSEExchangeCalendar
 from .exchange_calendar_sbf import SBFExchangeCalendar
 from .exchange_calendar_sehk import SEHKExchangeCalendar
@@ -74,6 +75,7 @@ _quantrocket_ibkr_calendar_factories = {
     "TSEJ": TSEJExchangeCalendar,
     "VSE": VSEExchangeCalendar,
     "WSE": WSEExchangeCalendar,
+    "us_extended_hours": USExtendedHoursExchangeCalendar,
 }
 
 _quantrocket_ibkr_calendar_aliases = {

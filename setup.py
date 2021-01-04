@@ -10,7 +10,7 @@ setup(
     description='Trading calendars for QuantRocket-supported exchanges',
     maintainer='QuantRocket LLC',
     maintainer_email='support@quantrocket.com',
-    url='https://github.com/quantrocket-llc/ib-trading-calendars',
+    url='https://github.com/quantrocket-llc/quantrocket-trading-calendars',
     license='Apache 2.0',
     packages=['quantrocket_trading_calendars'],
     entry_points = {

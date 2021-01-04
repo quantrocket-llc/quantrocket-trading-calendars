@@ -21,7 +21,7 @@ from quantrocket_trading_calendars import all_calendar_names, get_calendar
 
 class ExchangeStatusTestCase(unittest.TestCase):
 
-    def test_quantrocket_trading_calendars(self):
+    def test_holidays(self):
 
         # holiday
         self.assertDictEqual(
@@ -52,6 +52,7 @@ class ExchangeStatusTestCase(unittest.TestCase):
              'since': '2019-01-22T09:30:00',
              'until': '2019-01-22T16:00:00'})
 
+    def test_around_open_and_close(self):
         # right before open
         self.assertDictEqual(
             get_exchange_status("XNYS", "2019-01-03 09:29:59"),
@@ -95,13 +96,15 @@ class ExchangeStatusTestCase(unittest.TestCase):
             'since': '2019-01-03T16:00:00',
             'until': '2019-01-04T09:30:00'})
 
-        # holiday
+    def test_extended_hours(self):
+        # extended hours
         self.assertDictEqual(
-            get_exchange_status("SEHKNTL", "2014-10-06 10:00:00"),
-            {'status': 'closed',
-             'since': '2014-09-30T15:00:00',
-             'until': '2014-10-08T09:30:00'})
+            get_exchange_status("us_extended_hours", "2019-01-03 16:30:00"),
+            {'status': 'open',
+            'since': '2019-01-03T04:00:00',
+            'until': '2019-01-03T20:00:00'})
 
+    def test_early_close(self):
         # early close
         self.assertDictEqual(
             get_exchange_status("NYSE", "2018-12-24 13:30:00"),
