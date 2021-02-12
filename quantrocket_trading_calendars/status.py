@@ -47,7 +47,7 @@ def get_exchange_status(exchange, dt):
         is_open = calendar.is_open_on_minute(asof_datetime + pd.Timedelta(minutes=1))
 
     if is_open:
-        asof_date = asof_datetime.date()
+        asof_date = asof_datetime.tz_convert("UTC").normalize()
         # Rewind open 1 minute
         since = calendar.session_open(asof_date) - pd.Timedelta(minutes=1)
         until = calendar.session_close(asof_date)
