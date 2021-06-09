@@ -13,10 +13,4 @@ setup(
     url='https://github.com/quantrocket-llc/quantrocket-trading-calendars',
     license='Apache 2.0',
     packages=['quantrocket_trading_calendars'],
-    entry_points = {
-        'console_scripts': ['exchange-status=quantrocket_trading_calendars.status:main'],
-    },
-    install_requires=[
-        'trading_calendars>=1.11.0'
-    ]
 )

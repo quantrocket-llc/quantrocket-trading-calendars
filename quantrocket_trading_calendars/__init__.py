@@ -13,8 +13,14 @@
 # limitations under the License.
 
 
-from trading_calendars.calendar_utils import get_calendar
-from .calendar_utils import all_calendar_names
+from trading_calendars import *
+
+import warnings
+warnings.warn(
+    "the 'quantrocket_trading_calendars' package is deprecated, please use "
+    "'trading_calendars' instead, which contains all the functionality that "
+    "was available in quantrocket_trading_calendars"
+)
 
 from ._version import get_versions
 __version__ = get_versions()['version']
